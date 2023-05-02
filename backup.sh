@@ -81,7 +81,7 @@ if [ ! -z "$(echo $MULTI_DATABASES | grep -i -E "(yes|true|1)")" ]; then
 
     DUMP_FILE="/tmp/${DB}.sql.gz"
 
-    mysqldump $MYSQL_HOST_OPTS $MYSQLDUMP_OPTIONS $DB | gzip > $DUMP_FILE
+    mysqldump $MYSQL_HOST_OPTS $MYSQLDUMP_OPTIONS $DB | bzip2 -c > $DUMP_FILE
 
     if [ $? = 0 ]; then
       if [ "${S3_FILENAME}" = "**None**" ]; then
